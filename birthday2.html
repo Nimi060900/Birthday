@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Param ❤️</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Poppins,sans-serif;
+background:linear-gradient(135deg,#ffdce6,#fff);
+overflow:hidden;
+}
+
+/* HORIZONTAL AUTO STORY */
+
+.container{
+display:flex;
+width:300vw;
+height:100vh;
+transition:transform 1.5s ease;
+}
+
+.section{
+width:100vw;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+/* CARD */
+
+.card{
+background:rgba(255,255,255,0.7);
+backdrop-filter:blur(15px);
+padding:30px;
+border-radius:20px;
+max-width:420px;
+text-align:center;
+box-shadow:0 0 20px rgba(255,100,150,0.3);
+opacity:0.6;
+transform:scale(0.9);
+transition:all 1s ease;
+}
+
+/* GLOW EFFECT WHEN ACTIVE */
+
+.active .card{
+opacity:1;
+transform:scale(1);
+box-shadow:0 0 50px rgba(255,100,150,0.6);
+}
+
+/* NETFLIX SLOW ZOOM */
+
+.zoom{
+width:100%;
+border-radius:15px;
+animation:zoomEffect 12s ease-in-out infinite alternate;
+}
+
+
+@keyframes zoomEffect{
+from{transform:scale(1);}
+to{transform:scale(1.08);}
+}
+
+/* FLOATING HEARTS */
+
+.heart{
+position:fixed;
+color:#ff4d88;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh);opacity:0}
+50%{opacity:1}
+100%{transform:translateY(-10vh);opacity:0}
+}
+
+.first-img{
+width:70%;        /* smaller size */
+max-width:300px;  /* prevents becoming too big */
+display:block;
+margin:0 auto 20px auto;  /* center properly */
+border-radius:15px;
+}
+
+h1{ color:#ff4d88; }
+
+</style>
+</head>
+
+<body>
+
+<div class="container" id="container">
+
+<!-- PAGE 1 -->
+<div class="section active">
+<div class="card">
+<img class="zoom first-img" src="Image1.png">
+<h1>Happy Birthday Param ❤️</h1>
+<p>Some people enter life quietly… and become everything.</p>
+</div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="section">
+<div class="card">
+<img class="zoom" src="Image2.png">
+<p>Happy 26th birthday 💙<br><br>
+You fill my life with love, laughter and joy.</p>
+</div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="section">
+<div class="card">
+<img class="zoom" src="Image3.png">
+<p><i>You’re not just someone I love — you’re my Doraemon in a Nobita world.</i></p>
+</div>
+</div>
+
+</div>
+
+<script>
+
+/* AUTO SCROLL STORY */
+
+let index=0;
+const container=document.getElementById("container");
+const sections=document.querySelectorAll(".section");
+
+setInterval(()=>{
+sections[index].classList.remove("active");
+
+index++;
+if(index>=sections.length){index=0;}
+
+container.style.transform=`translateX(-${index*100}vw)`;
+
+sections[index].classList.add("active");
+
+},5000); // change every 5 sec
+
+
+/* FLOATING HEARTS */
+
+function createHeart(){
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(15+Math.random()*25)+"px";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),6000);
+}
+
+setInterval(createHeart,500);
+
+</script>
+
+</body>
+</html>
